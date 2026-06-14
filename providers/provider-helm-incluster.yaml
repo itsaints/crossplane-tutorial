@@ -21,16 +21,26 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 
 ---
+
 apiVersion: pkg.crossplane.io/v1beta1
 kind: DeploymentRuntimeConfig
 metadata:
-  name: crossplane-provider-helm
+  name: crossplane-provider-kubernetes
 spec:
   deploymentTemplate:
     spec:
+      selector:
+        matchLabels:
+          app: provider-kubernetes
       template:
+        metadata:
+          labels:
+            app: provider-kubernetes
         spec:
-          serviceAccountName: crossplane-provider-helm
+          serviceAccountName: crossplane-provider-kubernetes
+          containers:
+          - name: package-runtime
+
 
 ---
 apiVersion: pkg.crossplane.io/v1
