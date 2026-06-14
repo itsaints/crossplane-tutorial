@@ -25,19 +25,19 @@ roleRef:
 apiVersion: pkg.crossplane.io/v1beta1
 kind: DeploymentRuntimeConfig
 metadata:
-  name: crossplane-provider-kubernetes
+  name: crossplane-provider-helm
 spec:
   deploymentTemplate:
     spec:
       selector:
         matchLabels:
-          app: provider-kubernetes
+          app: provider-helm
       template:
         metadata:
           labels:
-            app: provider-kubernetes
+            app: provider-helm
         spec:
-          serviceAccountName: crossplane-provider-kubernetes
+          serviceAccountName: crossplane-provider-helm
           containers:
           - name: package-runtime
 
